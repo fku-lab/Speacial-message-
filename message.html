@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💚 Special Message for Karina</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
+        :root { --green: #22c55e; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4, #bbf7d0, #86efac);
+            min-height: 100vh;
+            color: #1f2937;
+        }
+
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #f0fdf4, #86efac);
+            z-index: 100;
+        }
+
+        .lock-box {
+            background: white; padding: 40px 25px; border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(34,197,94,0.4); text-align: center;
+            width: 90%; max-width: 380px;
+        }
+
+        input {
+            width: 100%; padding: 18px; font-size: 1.4rem; text-align: center;
+            border: 4px solid var(--green); border-radius: 25px; margin: 20px 0;
+        }
+
+        button {
+            background: var(--green); color: white; border: none;
+            padding: 16px 60px; font-size: 1.3rem; border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #gift-screen { display: none; padding: 20px 15px; }
+
+        .photo-frame {
+            text-align: center; margin: 30px 0;
+        }
+
+        .photo-frame img {
+            max-width: 340px;
+            border-radius: 20px;
+            border: 8px solid #86efac;
+            box-shadow: 0 15px 35px rgba(34,197,94,0.3);
+        }
+
+        .appreciation {
+            background: white;
+            padding: 35px 25px;
+            margin: 20px 15px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(34,197,94,0.25);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <div class="lock-box">
+            <div style="font-size:5rem;margin-bottom:10px;">🌿💚</div>
+            <h1>A Special Message</h1>
+            <p>Enter the secret code 💚</p>
+            <input type="text" id="password-input" placeholder="Enter Code" autocomplete="off">
+            <button onclick="unlockGift()">Open Message 🌿</button>
+        </div>
+    </div>
+
+    <div id="gift-screen">
+        <h1 style="text-align:center; color:var(--green); margin:25px 0;">Dear Karina 🌿</h1>
+
+        <!-- Photo Area -->
+        <div class="photo-frame">
+            <img src="https://i.imgur.com/YOUR_LINK_HERE.png" alt="Special Memory">
+        </div>
+
+        <div class="appreciation">
+            <p>Dear Karina,</p>
+            <p>This is Ibrahim. I was just trying out some different things today and thought of sending you this special message 💚</p>
+            <p>I really want to thank you from the bottom of my heart for being in my life. Especially for talking to me and supporting me during my lowest moments — it truly meant a lot.</p>
+            <p>I admire you so much. Your laugh, your smile, and your kindness always brighten my days. I love everything about you. You’re such a beautiful soul, and I feel truly blessed to know you.</p>
+            <p>May Allah accept all your prayers, grant all your wishes, and bless you with everything good in this world and the hereafter 🤲</p>
+            <p>Thank you for being you.</p>
+            <p style="margin-top:25px; font-weight:600;">— Ibrahim 🌿</p>
+        </div>
+
+        <div style="text-align:center; margin:40px 0;">
+            <button onclick="restart()">Read Again 🌿</button>
+        </div>
+    </div>
+
+    <canvas id="confetti"></canvas>
+
+    <script>
+        const correctCode = "0609";
+
+        function unlockGift() {
+            if (document.getElementById('password-input').value.trim() === correctCode) {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('gift-screen').style.display = 'block';
+                launchConfetti();
+            } else {
+                alert("Wrong Code 💚 Try Again!");
+            }
+        }
+
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            // Confetti code (simple version)
+            console.log("%c💚 Message Opened Successfully!", "color:#22c55e; font-size:16px");
+        }
+
+        function restart() { location.reload(); }
+
+        document.getElementById('password-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') unlockGift();
+        });
+    </script>
+</body>
+</html>
